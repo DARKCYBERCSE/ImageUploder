@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Upload</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('/static/image/Japanese-Cherry-Blossom-Landscape-AI-Generated-4K-Wallpaper-1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(1.05); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .header {
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      font-weight: bold;
+    }
+
+    .header a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      margin: auto;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      width: 400px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 60px;
+      animation: pulse 2s infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    h2 {
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    input[type="file"],
+    select,
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-btn {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      Developed by: <span style="color:#00ffff;">Muthuraj Prince</span> | 
+      <a href="mailto:muthuraj92320@gmail.com">muthuraj92320@gmail.com</a>
+    </div>
+    <div class="header-right">
+      <a href="https://instagram.com/@mr_pearl_prince_" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" width="20">
+      </a>
+      <a href="https://github.com/DARKCYBERCSE" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20">
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/727/727399.png" alt="Logo" class="logo">
+    <h2>Upload Your Image</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="image" required>
+      <label for="upload_to">Upload To:</label>
+      <select name="upload_to" id="upload_to">
+        <option value="local">Local Storage</option>
+        <option value="imgur">Imgur Cloud</option>
+      </select>
+      <input type="submit" value="Upload Image">
+    </form>
+
+    <a href="/gallery" target="_blank" class="_

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Success</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #f06, #4a90e2);
+      padding: 50px;
+      color: white;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      background: -webkit-linear-gradient(#ff512f, #dd2476);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .image-container {
+      margin-top: 20px;
+    }
+
+    .image-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .image-item {
+      text-align: center;
+    }
+
+    img {
+      max-width: 250px;
+      border-radius: 20px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.08);
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 15px;
+      background: #00c9ff;
+      color: white;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .back-button {
+      padding: 15px 30px;
+      margin-top: 40px;
+      background-color: #ff512f;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Upload Successful! 🎉</h1>
+
+  {% if image_url %}
+    <div class="image-container">
+      <h3>Uploaded Image:</h3>
+      <a href="{{ image_url }}" target="_blank">
+        <img src="{{ image_url }}" alt="Uploaded Image">
+      </a>
+    </div>
+  {% endif %}
+
+  <h3>Total Images Uploaded: {{ image_count }}</h3>
+
+  <div class="image-list">
+    {% for image in image_list %}
+      <div class="image-item">
+        <a href="{{ image }}" target="_blank">
+          <img src="{{ image }}" alt="Uploaded">
+        </a><br>
+        <a href="{{ image }}" download class="download-btn">⬇ Download</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="back-button" onclick="window.location.href='/'">⬅ Back to Upload</button>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Success</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #f06, #4a90e2);
+      padding: 50px;
+      color: white;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      background: -webkit-linear-gradient(#ff512f, #dd2476);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .image-container {
+      margin-top: 20px;
+      animation: bounceIn 1.5s ease-out;
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    img {
+      max-width: 300px;
+      margin: 10px;
+      border-radius: 20px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .image-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .image-list h3 {
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #ffcc00;
+    }
+
+    .back-button {
+      padding: 15px 30px;
+      margin-top: 40px;
+      background-color: #ff512f;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+      background-color: #ff2472;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">🎉 Upload Successful! 🎉</div>
+  <div class="image-container">
+    <h3>Uploaded Image:</h3>
+    <img src="{{ image_url }}" alt="Uploaded Image">
+  </div>
+
+  <h3>Total Images Uploaded: {{ image_count }}</h3>
+
+  <div class="image-list">
+    <h3>All Uploaded Images:</h3>
+    {% for image in image_list %}
+      <img src="{{ image }}" alt="Uploaded Image">
+    {% endfor %}
+  </div>
+
+  <button class="back-button" onclick="window.location.href='/'">Back to Upload</button>
+
+</body>
+</html>
